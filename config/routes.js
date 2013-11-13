@@ -4,7 +4,7 @@ var dockerfile = require("../controllers/dockerfiles");
 var docker = require("../controllers/docker");
 var container = require("../controllers/container");
 
-exports.makeRoutes= function(app){
+exports.makeRoutes = function (app) {
 
 	
 
@@ -25,9 +25,8 @@ exports.makeRoutes= function(app){
 
 	app.get("/progressStatus", dockerfile.progressStatus);
 
-	app.get("/dashboard/:docfileName", function(req, res){
-		res.redirect("/docker/" + req.params.docfileName );
-
+	app.get("/dashboard/:docfileName", function (req, res) {
+		res.redirect("/docker/" + req.params.docfileName);
 	});
 
 
@@ -38,15 +37,14 @@ exports.makeRoutes= function(app){
 	||
 	*/
 
-	app.get("/docker", function(req, res){
-		req.session.messages = {text: "Please upload dockerfile first", type: "warn"};
+	app.get("/docker", function (req, res) {
+		req.session.messages = { text: "Please upload dockerfile first", type: "warn" };
 	    res.redirect("/"); 
-
-	  })
+	})
 	app.get("/docker/:id", docker.index);
 	app.get("/docker/:id/inspect", docker.inspect);
 	app.get("/docker/:id/delete", docker.delete);
-//	app.delete("/docker/:id/delete", docker.delete)
+	//	app.delete("/docker/:id/delete", docker.delete)
 
 
 
@@ -64,9 +62,4 @@ exports.makeRoutes= function(app){
 	app.get("/containers/:id/kill", container.kill)
 	app.get("/containers/:id/delete", container.delete);
 
-
-
-
-
-
-} 
+}; 

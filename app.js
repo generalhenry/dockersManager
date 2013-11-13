@@ -33,7 +33,7 @@ app.use(function(req, res, next){
     res.locals.messages = req.session.messages;
     delete req.session.messages;
     next();
- });
+});
 
 
 app.use(app.router);
@@ -44,9 +44,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // development only
-if ('development' == app.get('env')) {
+app.configure('development', function(){
   app.use(express.errorHandler());
-}
+})
 
 
 routes.makeRoutes(app);
