@@ -5,7 +5,6 @@
 ||				->buildDockerfile() : Build dockerfile and create image
 ||				->progressStatus() : function to track file uploading progress status 
 */
-var fs = require('fs');
 var path = require('path');
 var appUtil = require('./app_util');
 var progress = 0;

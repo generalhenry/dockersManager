@@ -1,3 +1,5 @@
+// for making http requests should be using the request module or the like
+
 var http = require('http');
 var fs = require('fs');
 exports.makeGetRequest = function (queryString, callback) {
@@ -81,6 +83,8 @@ exports.makeFileUploadRequest = function (filePath, queryString, onResult) {
     console.log('problem with request: ' + e.message);
     onResult(null, null, e.message);
   });
+
+  // this is a .pipe
   fs.createReadStream(filePath).on('data', function (data) {
     req.write(data);
   }).on('end', function () {
